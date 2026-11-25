@@ -6,7 +6,7 @@ dedecms_581_rce_scan.py
 DedeCMS v5.8.1 ShowMsg() Referer -> template cache RCE 批量检测 / 回显验证。
 
 - 覆盖 plus/ 下 12 个可达 ShowMsg(...,'-1') 的入口，共 16 个参数变体
-- 用「运行期拼接」标记验证代码执行，反射不等于执行
+- written 用 payload 前缀匹配（只算字符串进了模板），executed 用运行期拼接标记（算 PHP 真执行）
 - 并发、超时、重试、CSV/JSON 落盘、可选命令执行
 
 用法:
@@ -138,7 +138,7 @@ def check_one(target, endpoint, method, query, data, timeout, verify, proxy):
             "method": method,
             "query": query,
             "status": resp.status_code,
-            "written": "location=" in text,
+            "written": ("location='" + payload[:24]) in text,
             "executed": tag in text,
             "elapsed_ms": int((time.time() - started) * 1000),
             "evidence": (tag if tag in text else ""),
@@ -239,6 +239,7 @@ def main():
     print("")
     print("targets=%d  probes=%d  written=%d  executed=%d" % (
         len(targets), len(results), sum(1 for r in results if r["written"]), len(hit)))
+    print("note: each probe may leave data/tplcache/string_<md5>.inc on the target; read and remove them after testing")
 
     if args.out:
         with open(args.out, "w", newline="", encoding="utf-8-sig") as fh:
