@@ -3,3 +3,5 @@ _tmp/
 *.json
 !scan-summary.json
 __pycache__/
+data/tplcache/
+string_*.inc
