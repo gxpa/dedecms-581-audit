@@ -1,0 +1,5 @@
+*.zip
+_tmp/
+*.json
+!scan-summary.json
+__pycache__/
