@@ -87,11 +87,16 @@ if ($token[0] = '306' && in_array($token[1], $disabled_functions)) {
 REPORT.md              完整审计报告
 DISCLOSURE.md          时间线与公开对照
 COMPARISON.md          与公开 EXP 的逐项对比
+DISCLAIMER.md          使用边界与免责声明
 poc/                   两个入口的原始请求
 tools/cms_sink_scan.py 通用 sink 扫描器
 tools/dedecms_581_rce_scan.py  12 入口 / 16 变体 并发检测 + 回显验证
 publish.ps1            无 git 环境下用 REST API 发布到 GitHub
 ```
+
+## 使用边界
+
+本仓库仅面向已获得合法授权的测试环境。完整条款见 [DISCLAIMER.md](DISCLAIMER.md)。
 
 ## 批量检测
 
